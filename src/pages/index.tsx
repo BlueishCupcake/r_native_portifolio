@@ -1,19 +1,34 @@
 import React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 
-import Home from './Home/Home';
-import Profile from './Profile/Profile';
+import Home from './Home';
+import Profile from './Profile';
+
+import HomeIcon from '../assets/icons/HomeIcon/HomeIcon';
+import UserIcon from '../assets/icons/UserIcon/UserIcon';
 
 const Pages: React.FC = () => {
-  const Stack = createNativeStackNavigator();
+  const Tab = createBottomTabNavigator();
 
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Home">
-        <Stack.Screen name="Home" component={Home} />
-        <Stack.Screen name="Profile" component={Profile} />
-      </Stack.Navigator>
+      <Tab.Navigator>
+        <Tab.Screen
+          name="Home"
+          component={Home}
+          options={{
+            tabBarIcon: () => <HomeIcon />,
+          }}
+        />
+        <Tab.Screen
+          name="Profile"
+          component={Profile}
+          options={{
+            tabBarIcon: () => <UserIcon />,
+          }}
+        />
+      </Tab.Navigator>
     </NavigationContainer>
   );
 };
