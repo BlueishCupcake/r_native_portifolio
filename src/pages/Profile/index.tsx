@@ -1,8 +1,15 @@
 import React from 'react';
 import {Text, View} from 'react-native';
-import NavigationProps from '../../utils/NavigationProps.types';
 
-const Profile: React.FC<NavigationProps> = ({navigation}) => {
+import {useNavigation} from '@react-navigation/native';
+import {StackNavigationProp} from '@react-navigation/stack';
+import {MainBottomTabParamList} from '../MainBottomTabParams';
+
+type profileScreenProp = StackNavigationProp<MainBottomTabParamList, 'Profile'>;
+
+const Profile: React.FC = () => {
+  const navigation = useNavigation<profileScreenProp>();
+
   return (
     <View
       style={{

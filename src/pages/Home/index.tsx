@@ -1,9 +1,15 @@
+import Card from '../../components/Card';
 import React from 'react';
-import {Text, View} from 'react-native';
+import {View} from 'react-native';
+import {useNavigation} from '@react-navigation/native';
+import {StackNavigationProp} from '@react-navigation/stack';
+import {MainBottomTabParamList} from '../MainBottomTabParams';
 
-import NavigationProps from '../../utils/NavigationProps.types';
+type homeScreenProp = StackNavigationProp<MainBottomTabParamList, 'Home'>;
 
-const Home: React.FC<NavigationProps> = () => {
+const Home: React.FC = () => {
+  const navigation = useNavigation<homeScreenProp>();
+
   return (
     <>
       <View
@@ -13,12 +19,7 @@ const Home: React.FC<NavigationProps> = () => {
           justifyContent: 'center',
           backgroundColor: '#27293F',
         }}>
-        <Text
-          style={{
-            color: '#B80084',
-          }}>
-          Home Screen
-        </Text>
+        <Card category="Category Test" title="Title Test" text="Text Test" />
       </View>
     </>
   );
